@@ -35,6 +35,7 @@ TRANSFORMS.register(T.RandomCrop)
 TRANSFORMS.register(T.RandomHorizontalFlip)
 TRANSFORMS.register(T.Normalize)
 TRANSFORMS.register(T.Transpose)
+TRANSFORMS.register(T.ToTensor)
 
 
 @TRANSFORMS.register()

@@ -14,15 +14,23 @@
 
 import copy
 import paddle
+from paddle.regularizer import L2Decay
 
 from .lr_scheduler import build_lr_scheduler
 
 
-def build_optimizer(cfg, lr_scheduler, parameter_list=None):
+def build_optimizer(cfg, lr_scheduler, parameter_list=None, weight_decay=None):
     cfg_copy = copy.deepcopy(cfg)
 
     opt_name = cfg_copy.pop('name')
+    cfg_copy.pop('weight_decay')
 
+    # if opt_name == "Adam":
     return getattr(paddle.optimizer, opt_name)(lr_scheduler,
                                                parameters=parameter_list,
+                                               weight_decay=weight_decay,
                                                **cfg_copy)
+    # else:
+    #     return getattr(paddle.optimizer, opt_name)(lr_scheduler,
+    #                                                parameters=parameter_list,
+    #                                                **cfg_copy)

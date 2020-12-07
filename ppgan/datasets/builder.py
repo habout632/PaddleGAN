@@ -65,13 +65,13 @@ class DictDataset(paddle.io.Dataset):
             setattr(self, k, Manager().dict())
 
 
-class DictDataLoader():
+class DictDataLoader:
     def __init__(self, dataset, batch_size, is_train, num_workers=4):
 
         self.dataset = DictDataset(dataset)
 
         place = paddle.CUDAPlace(ParallelEnv().dev_id) \
-                    if ParallelEnv().nranks > 1 else paddle.CUDAPlace(0)
+            if ParallelEnv().nranks > 1 else paddle.CUDAPlace(0)
 
         sampler = DistributedBatchSampler(self.dataset,
                                           batch_size=batch_size,

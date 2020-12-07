@@ -13,3 +13,4 @@
 # limitations under the License.
 
 from .nlayers import NLayerDiscriminator
+from .stargan2_discriminator import Discriminator

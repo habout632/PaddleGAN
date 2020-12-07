@@ -368,7 +368,9 @@ class MakeupModel(BaseModel):
         self.loss_G.backward()
 
     def optimize_parameters(self):
-        """Calculate losses, gradients, and update network weights; called in every training iteration"""
+        """
+        Calculate losses, gradients, and update network weights; called in every training iteration
+        """
         # forward
         self.forward()  # compute fake images and reconstruction images.
         # G_A and G_B
